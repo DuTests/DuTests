@@ -1,1 +1,0 @@
-Du TESTS application
