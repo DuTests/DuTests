@@ -93,4 +93,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionSay($msg = "ThreeRandomWords")
+    {
+        return $this->render('say', ['message' => $msg]);
+    }
 }
+
