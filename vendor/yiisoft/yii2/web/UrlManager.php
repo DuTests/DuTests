@@ -48,7 +48,7 @@ class UrlManager extends Component
      * and can thus produce more user-friendly URLs, such as "/news/Yii-is-released", instead of
      * "/index.php?r=news/view&id=100".
      */
-    public $enablePrettyUrl = false;
+    public $enablePrettyUrl = true;
     /**
      * @var boolean whether to enable strict parsing. If strict parsing is enabled, the incoming
      * requested URL must match at least one of the [[rules]] in order to be treated as a valid request.
@@ -106,7 +106,7 @@ class UrlManager extends Component
      * @var boolean whether to show entry script name in the constructed URL. Defaults to true.
      * This property is used only if [[enablePrettyUrl]] is true.
      */
-    public $showScriptName = true;
+    public $showScriptName = false;
     /**
      * @var string the GET parameter name for route. This property is used only if [[enablePrettyUrl]] is false.
      */
