@@ -16,6 +16,21 @@ class TestsController extends Controller
 	{
 		return $this->render('index', ['message' => $msg]);
 	}
+
+	public function actionCreate()
+	{
+		return $this->render('UnderConstruction');
+	}
+
+	public function actionUpdate()
+	{
+		return $this->render('UnderConstruction');
+	}
+
+	public function actionPasstest()
+	{
+		return $this->render('UnderConstruction');
+	}
 }
 
 
