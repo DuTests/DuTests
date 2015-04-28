@@ -13,7 +13,7 @@ use yii\web\Controller;
 class TestsController extends Controller
 {
 	
-	public function actionHello($msg = "Hello this is testing of 'Tests' controller.")
+	public function actionIndex($msg = "Hello this is testing of 'Tests' controller.")
 	{
 		return $this->render('index', ['message' => $msg]);
 	}
