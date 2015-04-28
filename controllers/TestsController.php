@@ -17,17 +17,32 @@ class TestsController extends Controller
 		return $this->render('index', ['message' => $msg]);
 	}
 
-	public function actionCreate()
+	public function actionCreatetest()
 	{
 		return $this->render('UnderConstruction');
 	}
 
-	public function actionUpdate()
+	public function actionUpdatetest()
 	{
 		return $this->render('UnderConstruction');
 	}
 
 	public function actionPasstest()
+	{
+		return $this->render('UnderConstruction');
+	}
+
+	public function actionCreatequestion()
+	{
+		return $this->render('UnderConstruction');
+	}
+
+	public function actionUpdatequestion()
+	{
+		return $this->render('UnderConstruction');
+	}
+
+	public function actionDeletequestion()
 	{
 		return $this->render('UnderConstruction');
 	}
