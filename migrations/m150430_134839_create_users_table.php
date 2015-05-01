@@ -11,9 +11,9 @@ class m150430_134839_create_users_table extends Migration
             'id'        =>      'pk',
             'name'      =>      'varchar(40) NOT NULL',
             'surname'   =>      'varchar(40) NOT NULL',
-            'nickname'  =>      'varchar(40) NOT NULL',
+            'username'  =>      'varchar(40) NOT NULL',
             'email'     =>      'varchar(40) NOT NULL',
-            'password'  =>      'varchar(255) NOT NULL',
+            'password'  =>      'varchar(70) NOT NULL',
             'age'       =>      'smallint(2) NOT NULL',
             ));
     }
