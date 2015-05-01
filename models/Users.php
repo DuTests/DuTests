@@ -12,33 +12,27 @@ use Yii;
  * @property string $surname
  * @property string $nickname
  * @property string $email
+ * @property string $password
  * @property integer $age
  */
 class Users extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
+
     public static function tableName()
     {
         return 'users';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['name', 'surname', 'nickname', 'email', 'age'], 'required'],
+            [['name', 'surname', 'nickname', 'email', 'password', 'age'], 'required'],
             [['age'], 'integer'],
-            [['name', 'surname', 'nickname', 'email'], 'string', 'max' => 40]
+            [['name', 'surname', 'nickname', 'email'], 'string', 'max' => 40],
+            [['password'], 'string', 'max' => 255]
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
@@ -47,6 +41,7 @@ class Users extends \yii\db\ActiveRecord
             'surname' => 'Surname',
             'nickname' => 'Nickname',
             'email' => 'Email',
+            'password' => 'Password',
             'age' => 'Age',
         ];
     }
