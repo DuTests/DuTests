@@ -6,26 +6,10 @@
 
 <head>
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
 
-<style>
-    .zoom_icon i{
-    margin:20px;
-
-    -moz-transition:-moz-transform 0.5s ease-in; 
-    -webkit-transition:-webkit-transform 0.5s ease-in; 
-    -o-transition:-o-transform 0.5s ease-in;
-    }
-    .zoom_icon i:hover{
-    -moz-transform:scale(2); 
-    -webkit-transform:scale(2);
-    -o-transform:scale(2);
-    }
-</style>
 <div class="site-index">
 
     <div class="jumbotron">
