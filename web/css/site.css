@@ -89,3 +89,16 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+.zoom_icon i{
+    margin:30px;
+    position: relative;
+
+    -moz-transition:-moz-transform 0.5s ease-in; 
+    -webkit-transition:-webkit-transform 0.5s ease-in; 
+    -o-transition:-o-transform 0.5s ease-in;
+    }
+    .zoom_icon i:hover{
+    -moz-transform:scale(1.5); 
+    -webkit-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    }
