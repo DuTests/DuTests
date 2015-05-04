@@ -100,7 +100,7 @@ class SiteController extends Controller
         return $this->render('say', ['message' => $msg]);
     }
 
-    public function actionUserForm()
+    public function actionUserform()
     {
         $model = new UserForm();
         
