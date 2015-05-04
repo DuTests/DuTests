@@ -102,8 +102,22 @@ class SiteController extends Controller
 
     public function actionUserForm()
     {
-    
-    }
+        $model = new UserForm;
+        /*
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            // lets do it later
+        }
+        else 
+        {
+            return $this->render('userForm', ['model'=>$model]);
+        }
+        */
+        return $this->render('userForm', [
+                'model' => $model,
+            ]);
+
+
 
 }
 
