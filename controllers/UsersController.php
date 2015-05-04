@@ -6,6 +6,9 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use app\models\Users;
+use app\models\User;
+use app\models\LoginForm;
+use app\models\RegisterForm;
 
 
 	class UsersController extends Controller
@@ -17,7 +20,6 @@ use app\models\Users;
 
 		    if ($model->load(Yii::$app->request->post())) {
 		        if ($model->validate()) {
-		            // form inputs are valid, do something here
 		            return;
 		        }
 		    }
@@ -27,9 +29,21 @@ use app\models\Users;
 		    ]);
 		}
 
+	public function actionLogin()
+	    {
+	        if (!\Yii::$app->user->isGuest) {
+	            return $this->goHome();
+	        }
 
-
-
+	        $model = new LoginForm();
+	        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+	            return $this->goBack();
+	        } else {
+	            return $this->render('login', [
+	                'model' => $model,
+	            ]);
+	        }
+	    }
 
 	}
 
