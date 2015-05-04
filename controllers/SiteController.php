@@ -113,7 +113,7 @@ class SiteController extends Controller
             return $this->render('userForm', ['model'=>$model]);
         }
         */
-        return $this->render('userForm', [
+        return $this->render('UserForm', [
                 'model' => $model,
             ]);
 
