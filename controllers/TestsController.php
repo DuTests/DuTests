@@ -7,9 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 
 
-/**
-* 
-*/
+
 class TestsController extends Controller
 {
 	public function actionIndex($msg = "Hello this is testing of 'Tests' controller.")
