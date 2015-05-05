@@ -89,3 +89,22 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+.zoom_icon i{
+    margin:30px;
+    position: relative;
+    color: #000000;
+    -moz-transition:-moz-transform 0.5s ease-in; 
+    -webkit-transition:-webkit-transform 0.5s ease-in; 
+    -o-transition:-o-transform 0.5s ease-in;
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+    }
+    .zoom_icon i:hover{
+    background-color: #B8B8E6;
+    /*-moz-transform:scale(1.5); 
+    -webkit-transform:scale(1.5);
+    -o-transform:scale(1.5);*/
+    }

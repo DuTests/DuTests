@@ -14,6 +14,10 @@ class TestsController extends Controller
 	{
 		return $this->render('index', ['message' => $msg]);
 	}
+	public function actionResults($msg = "Hello this is testing of 'Results' controller.")
+	{
+		return $this->render('index', ['message' => $msg]);
+	}
 
 	public function actionCreatetest()
 	{
