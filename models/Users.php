@@ -2,47 +2,48 @@
 
 namespace app\models;
 
+use yii\base\NotSupportedException;
 use Yii;
 
-/**
- * This is the model class for table "users".
- *
- * @property integer $id
- * @property string $name
- * @property string $surname
- * @property string $username
- * @property string $email
- * @property string $password
- * @property integer $age
- */
-class Users extends \yii\db\ActiveRecord
+class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface //  extends \yii\base\Object
 {
 
-    public static function tableName()
-    {
-        return 'users';
-    }
+    public $authKey;
+    public $accessToken;
 
-    public function rules()
-    {
-        return [
-            [['name', 'surname', 'username', 'email', 'password', 'age'], 'required'],
-            [['age'], 'integer'],
-            [['name', 'surname', 'username', 'email'], 'string', 'max' => 40],
-            [['password'], 'string', 'max' => 70]
-        ];
-    }
+        public static function findIdentity($id)
+        {
+            return static::findOne(['id' => $id]);
+        }
 
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'surname' => 'Surname',
-            'username' => 'Username',
-            'email' => 'Email',
-            'password' => 'Password',
-            'age' => 'Age',
-        ];
-    }
+        public static function findIdentityByAccessToken($token, $type = null)
+        {
+            throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        }
+
+        public static function findByUsername($username)
+        {
+            return static::findOne(['username' => $username]);
+        }
+
+        public function getId()
+        {
+            return $this->getPrimaryKey();
+        }
+
+        
+        public function getAuthKey()
+        {
+            return $this->authKey;
+        }  
+
+        public function validateAuthKey($authKey)
+        {
+            return $this->getAuthKey() === $authKey;
+        }
+        
+        public function validatePassword($password)
+        {
+            return Yii::$app->security->validatePassword($password, $this->password);
+        }
 }
