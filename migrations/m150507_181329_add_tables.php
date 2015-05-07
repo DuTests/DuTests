@@ -14,7 +14,9 @@ class m150507_181329_add_tables extends Migration
             'Gender'            =>  'tinyint(1) NOT NULL',
             'RegistrationDate'  =>  'date',
             'Username'          =>  'varchar(45) NOT NULL',
-            'Email'             =>  'varchar(60) NOT NULL'
+            'Email'             =>  'varchar(60) NOT NULL',
+            'Age'               =>  'int NOT NULL',
+            'Password'          =>  'varchar(255)'
         ));
 
 
@@ -68,13 +70,17 @@ class m150507_181329_add_tables extends Migration
     }
 
     public function down()
-    {
+    {   
+        $this->execute('SET FOREIGN_KEY_CHECKS=0');
         $this->dropTable('users');
-        $this->dropTable('completedTests');
+        $this->dropTable('сompletedTests');
         $this->dropTable('testi');
         $this->dropTable('testa_jaut');
         $this->dropTable('atbilzhu_var');
         $this->dropTable('kategorijas');
+        $this->execute('SET FOREIGN_KEY_CHECKS=1');
+
+
     }
     
     /*
