@@ -19,7 +19,6 @@ use app\models\Users;
 				$user[1] = new Users;
 				$user[2] = new Users;
 				$user[3] = new Users;
-				$user[4] = new Users;
 
 
 				$user[0]->FirstName = "Janis";

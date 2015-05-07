@@ -13,7 +13,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface /
 
         public static function findIdentity($id)
         {
-            return static::findOne(['id' => $id]);
+            return static::findOne(['UsersID' => $id]);
         }
 
         public static function findIdentityByAccessToken($token, $type = null)
@@ -23,7 +23,12 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface /
 
         public static function findByUsername($username)
         {
-            return static::findOne(['username' => $username]);
+            return static::findOne(['Username' => $username]);
+        }
+
+        public static function findByEmail($email)
+        {
+            return static::findOne(['Email' => $email]);
         }
 
         public function getId()
@@ -44,6 +49,6 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface /
         
         public function validatePassword($password)
         {
-            return Yii::$app->security->validatePassword($password, $this->password);
+            return Yii::$app->security->validatePassword($password, $this->Password);
         }
 }
