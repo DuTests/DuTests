@@ -48,6 +48,24 @@ class TestsController extends Controller
 	{
 		return $this->render('UnderConstruction');
 	}
+        
+        public function actionCreatecategory()
+        {
+            if (!\Yii::$app->user->isGuest) {
+                return $this->goHome();
+            }
+
+            $model = new \app\models\CategoryForm();
+            if ($model->load(Yii::$app->request->post())) {
+                $model->createdin = time();
+                $model->createdby = \Yii::$app->user->id;
+                print_r("Successful, ToDo: Save to db");
+            } else {
+                return $this->render('category', [
+                    'model' => $model,
+                ]);
+            }
+        }
 }
 
 
