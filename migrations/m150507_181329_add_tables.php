@@ -55,6 +55,12 @@ class m150507_181329_add_tables extends Migration
             'userid'        =>  'int',
             'createdin'     =>  'date',
             ));
+          $this->createTable('feedback', array(
+            'feedbackID'    =>  'pk',
+            'userid'        =>  'int',
+            'date_time'     =>  'Date',
+            'comment'       =>  'varchar(500)'
+            ));
 
           
           $this->addForeignKey('completed_tests_to_testi', 'сompletedTests', 'test_TestID', 'tests', 'testsid', 'CASCADE', 'RESTRICT');
@@ -68,6 +74,8 @@ class m150507_181329_add_tables extends Migration
 
           $this->addForeignKey("userid_to_categories","categories","userid","users","UsersID","CASCADE","RESTRICT");
 
+          $this->addForeignKey("userid_to_feedback","feedback","userid","users","UsersID","CASCADE","RESTRICT");
+
 
     }
 
@@ -80,6 +88,7 @@ class m150507_181329_add_tables extends Migration
         $this->dropTable('answer_of_test');
         $this->dropTable('variant_of_answer');
         $this->dropTable('categories');
+        $this->dropTable('feedback');
         $this->execute('SET FOREIGN_KEY_CHECKS=1');
 
 
