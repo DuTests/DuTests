@@ -59,7 +59,18 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            <p class="pull-left">&copy; My Company <?= 
+											$copyYear = 2015;
+												$curYear = date('Y'); 
+											if ($copyYear<$curYear)
+											{
+												echo (($copyYear != $curYear) ? '-' . $curYear : '');
+											}
+											else 
+											{
+												
+											} 
+											?></p>
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>
