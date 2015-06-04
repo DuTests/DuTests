@@ -66,10 +66,7 @@ AppAsset::register($this);
 											{
 												echo (($copyYear != $curYear) ? '-' . $curYear : '');
 											}
-											else 
-											{
-												
-											} 
+											
 											?></p>
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
