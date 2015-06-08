@@ -29,42 +29,52 @@ class m150507_181329_add_tables extends Migration
 
         ));
 
-          $this->createTable('testi', array(
-            'TestID'                    =>  'pk',
-            'TestName'                  =>  'varchar(45)',
-            'StartDate'                 =>  'date',
-            'EndDate'                   =>  'date',
-            'Kategorijas_KategorijasID' =>  'int'
+          $this->createTable('tests', array(
+            'testsid'                   =>  'pk',
+            'testname'                  =>  'varchar(45)',
+            'startdate'                 =>  'date',
+            'enddate'                   =>  'date',
+            'categoriesID'              =>  'int'
             ));
 
-          $this->createTable('testa_jaut', array(
-            'JautID'        =>  'pk',
-            'Jautajums'     =>  'varchar(45)',
-            'testi_testiID' =>  'int'
+          $this->createTable('answer_of_test', array(
+            'answerid'      =>  'pk',
+            'answer'        =>  'varchar(45)',
+            'testid'        =>  'int'
             ));
 
-          $this->createTable('atbilzhu_var', array(
-            'VardiID'           => 'pk',
-            'Variants'          => 'varchar(45)',
-            'testa_jaut_JautID' =>  'int'
+          $this->createTable('variant_of_answer', array(
+            'variantid'         => 'pk',
+            'variant'           => 'varchar(45)',
+            'answerid'          =>  'int'
             ));
 
-          $this->createTable('kategorijas', array(
-            'KategorijasID'     =>  'pk',
-            'CategoryName'      =>  'varchar(45)',
-            'NumberOfTests'     =>  'int',
-            'NumberOfQustions'  =>  'int'
+          $this->createTable('categories', array(
+            'categoriesID'  =>  'pk',
+            'name'          =>  'varchar(45)',
+            'userid'        =>  'int',
+            'createdin'     =>  'date',
+            ));
+          $this->createTable('feedback', array(
+            'feedbackID'    =>  'pk',
+            'userid'        =>  'int',
+            'date_time'     =>  'Date',
+            'comment'       =>  'varchar(500)'
             ));
 
           
-          $this->addForeignKey('completed_tests_to_testi', 'сompletedTests', 'test_TestID', 'testi', 'TestID', 'CASCADE', 'RESTRICT');
+          $this->addForeignKey('completed_tests_to_testi', 'сompletedTests', 'test_TestID', 'tests', 'testsid', 'CASCADE', 'RESTRICT');
           $this->addForeignKey('completed_tests_to_users', 'сompletedTests', 'users_UsersID', 'users', 'UsersID', 'CASCADE', 'RESTRICT');
 
-          $this->addForeignKey('testi_to_kategorijas', 'testi', 'Kategorijas_KategorijasID', 'kategorijas', 'KategorijasID', 'CASCADE', 'RESTRICT');
+          $this->addForeignKey('testi_to_kategorijas', 'tests', 'categoriesID', 'categories', 'categoriesID', 'CASCADE', 'RESTRICT');
 
-          $this->addForeignKey('testa_jaut_to_testi', 'testa_jaut', 'testi_testiID', 'testi', 'TestID', 'CASCADE', 'RESTRICT');
+          $this->addForeignKey('testa_jaut_to_testi', 'answer_of_test', 'testid', 'tests', 'testsid', 'CASCADE', 'RESTRICT');
 
-          $this->addForeignKey('atbilshu_var_to_testa_jaut', 'atbilzhu_var', 'testa_jaut_JautID', 'testa_jaut', 'JautID', 'CASCADE', 'RESTRICT');
+          $this->addForeignKey('atbilshu_var_to_testa_jaut', 'variant_of_answer', 'answerid', 'answer_of_test', 'answerid', 'CASCADE', 'RESTRICT');
+
+          $this->addForeignKey("userid_to_categories","categories","userid","users","UsersID","CASCADE","RESTRICT");
+
+          $this->addForeignKey("userid_to_feedback","feedback","userid","users","UsersID","CASCADE","RESTRICT");
 
 
     }
@@ -74,10 +84,11 @@ class m150507_181329_add_tables extends Migration
         $this->execute('SET FOREIGN_KEY_CHECKS=0');
         $this->dropTable('users');
         $this->dropTable('сompletedTests');
-        $this->dropTable('testi');
-        $this->dropTable('testa_jaut');
-        $this->dropTable('atbilzhu_var');
-        $this->dropTable('kategorijas');
+        $this->dropTable('tests');
+        $this->dropTable('answer_of_test');
+        $this->dropTable('variant_of_answer');
+        $this->dropTable('categories');
+        $this->dropTable('feedback');
         $this->execute('SET FOREIGN_KEY_CHECKS=1');
 
 
