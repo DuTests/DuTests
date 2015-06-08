@@ -9,8 +9,8 @@ use yii\widgets\ActiveForm;
 
 <?php $form = ActiveForm::begin(); ?>
 <?= $form->field($model, 'TestName'); ?>
-<?= $form->field($model, 'startDate'); ?>
-<?= $form->field($model, 'endDate'); ?>
+<?= $form->field($model, 'startDate')->textInput(array('type' => 'date')); ?>
+<?= $form->field($model, 'endDate')->textInput(array('type' => 'date')); ?>
 <?= $form->field($model, 'category')->dropDownList( [
 		'a' => 'Value a',
 		'b' => 'Value b',
