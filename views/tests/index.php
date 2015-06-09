@@ -32,5 +32,4 @@ $this->title = 'Tests';
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
 </div>

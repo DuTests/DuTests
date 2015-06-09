@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\UserForm;
+use app\models\TestForm;
 
 class SiteController extends Controller
 {
@@ -103,5 +105,33 @@ class SiteController extends Controller
     {
         return $this->render('say', ['message' => $msg]);
     }
-}
 
+    public function actionUserform()
+    {
+        $model = new UserForm();
+        
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            // lets do it later
+        }
+        else 
+        {
+            return $this->render('userForm', ['model'=>$model]);
+        }
+    }
+
+    public function actionTestform()
+    {
+        $model = new TestForm();
+        
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            // ???
+        }
+        else 
+        {
+            return $this->render('TestForm', ['model' => $model]);
+        }
+    }
+
+}
