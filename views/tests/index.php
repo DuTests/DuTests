@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php
 
 use yii\helpers\Html;
@@ -36,4 +34,3 @@ $this->title = 'Tests';
     ]); ?>
 
 </div>
->>>>>>> origin/DUT-13
