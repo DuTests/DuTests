@@ -13,7 +13,7 @@ use Yii;
  * @property string $enddate
  * @property integer $categoriesID
  *
- * @property Ñompletedtests[] $ñompletedtests
+ * @property Completedtests[] $ñompletedtests
  * @property AnswerOfTest[] $answerOfTests
  * @property Categories $categories
  */
