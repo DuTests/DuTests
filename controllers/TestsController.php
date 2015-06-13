@@ -1,14 +1,11 @@
 <?php
-
 namespace app\controllers;
-
 use Yii;
 use app\models\Tests;
 use app\models\TestsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 /**
  * TestsController implements the CRUD actions for Tests model.
  */
@@ -18,48 +15,51 @@ class TestsController extends Controller
 	{
 		return $this->render('index', ['message' => $msg]);
 	}
-
 	public function actionCreatetest()
 	{
 		return $this->render('UnderConstruction');
 	}
-
 	public function actionUpdatetest()
 	{
 		return $this->render('UnderConstruction');
 	}
-
 	public function actionPasstest()
 	{
 		return $this->render('UnderConstruction');
 	}
-
 	public function actionCreatequestion()
 	{
 		return $this->render('UnderConstruction');
 	}
-
 	public function actionUpdatequestion()
 	{
 		return $this->render('UnderConstruction');
 	}
-
 	public function actionDeletequestion()
 	{
 		return $this->render('UnderConstruction');
 	}
         
-    public function actionCreatecategory()
+  public function actionCreatecategory()
     {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
         $model = new \app\models\CategoryForm();
-        if ($model->load(Yii::$app->request->post())) {
-            $model->createdin = time();
-            $model->createdby = \Yii::$app->user->id;
-            print_r("Successful, ToDo: Save to db");
+        if ($model->load(Yii::$app->request->post()))
+        {
+           
+            $domainmodel = new \app\models\Category();
+            
+            $domainmodel->name = $model->name;
+            $domainmodel->userid = \Yii::$app->user->id;
+            $domainmodel->createdin = date("Y-m-d");
+            
+            $domainmodel->save();
+            
+             $model = new \app\models\CategoryForm();
+            
+            return $this->render('category', [
+                'model' => $model,
+            ]);
+        
         } else {
             return $this->render('category', [
                 'model' => $model,
@@ -78,7 +78,6 @@ class TestsController extends Controller
             ],
         ];
     }
-
     /**
      * Lists all Tests models.
      * @return mixed
@@ -87,13 +86,15 @@ class TestsController extends Controller
     {
         $searchModel = new TestsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Displays a single Tests model.
      * @param integer $id
@@ -105,7 +106,10 @@ class TestsController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Creates a new Tests model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -114,7 +118,10 @@ class TestsController extends Controller
     public function actionCreate()
     {
         $model = new Tests();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->testsid]);
         } else {
@@ -123,7 +130,10 @@ class TestsController extends Controller
             ]);
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Updates an existing Tests model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -133,7 +143,10 @@ class TestsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->testsid]);
         } else {
@@ -142,7 +155,10 @@ class TestsController extends Controller
             ]);
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Deletes an existing Tests model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -152,10 +168,15 @@ class TestsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+<<<<<<< HEAD
 
         return $this->redirect(['index']);
     }
 
+=======
+        return $this->redirect(['index']);
+    }
+>>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Finds the Tests model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
