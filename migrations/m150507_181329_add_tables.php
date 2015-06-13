@@ -77,8 +77,8 @@ class m150507_181329_add_tables extends Migration
         $this->dropTable('users');
         $this->dropTable('сompletedTests');
         $this->dropTable('tests');
-        $this->dropTable('answer_of_test');
-        $this->dropTable('variant_of_answer');
+        $this->dropTable('questions');
+        $this->dropTable('answers');
         $this->dropTable('categories');
         $this->dropTable('feedback');
         $this->execute('SET FOREIGN_KEY_CHECKS=1');
