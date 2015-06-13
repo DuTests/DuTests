@@ -91,10 +91,7 @@ class TestsController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Displays a single Tests model.
      * @param integer $id
@@ -106,10 +103,7 @@ class TestsController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Creates a new Tests model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -118,10 +112,7 @@ class TestsController extends Controller
     public function actionCreate()
     {
         $model = new Tests();
-<<<<<<< HEAD
 
-=======
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->testsid]);
         } else {
@@ -130,10 +121,7 @@ class TestsController extends Controller
             ]);
         }
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Updates an existing Tests model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -143,10 +131,7 @@ class TestsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-<<<<<<< HEAD
 
-=======
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->testsid]);
         } else {
@@ -155,10 +140,7 @@ class TestsController extends Controller
             ]);
         }
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Deletes an existing Tests model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -168,15 +150,10 @@ class TestsController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-<<<<<<< HEAD
 
         return $this->redirect(['index']);
     }
 
-=======
-        return $this->redirect(['index']);
-    }
->>>>>>> 8a3568ca41a3b5086f591aabf07443b43a142f60
     /**
      * Finds the Tests model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
