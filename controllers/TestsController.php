@@ -3,6 +3,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Tests;
 use app\models\TestsSearch;
+use app\models\Category;
+use app\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -87,6 +89,17 @@ class TestsController extends Controller
         $searchModel = new TestsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+	
+		public function actionCategories()
+    {
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('categories', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
