@@ -56,9 +56,9 @@ class Tests extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getсompletedtests()
+    public function getCompletedtests()
     {
-        return $this->hasMany(сompletedtests::className(), ['test_TestID' => 'testsid']);
+        return $this->hasMany(Completedtests::className(), ['testId' => 'testId']);
     }
 
     /**
@@ -66,7 +66,7 @@ class Tests extends \yii\db\ActiveRecord
      */
     public function getAnswerOfTests()
     {
-        return $this->hasMany(AnswerOfTest::className(), ['testid' => 'testsid']);
+        return $this->hasMany(AnswerOfTest::className(), ['testId' => 'testId']);
     }
 
     /**
@@ -74,6 +74,6 @@ class Tests extends \yii\db\ActiveRecord
      */
     public function getCategories()
     {
-        return $this->hasOne(Categories::className(), ['categoriesID' => 'categoriesID']);
+        return $this->hasOne(Categories::className(), ['categoryId' => 'categoryId']);
     }
 }
