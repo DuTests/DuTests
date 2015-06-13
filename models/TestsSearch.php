@@ -56,7 +56,7 @@ class TestsSearch extends Tests
         }
 
         $query->andFilterWhere([
-            'testId' => $this->testsId,
+            'testId' => $this->testId,
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
             'categoryId' => $this->categoryId,
