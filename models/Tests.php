@@ -33,9 +33,9 @@ class Tests extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['startdate', 'enddate'], 'safe'],
-            [['categoriesID'], 'integer'],
-            [['testname'], 'string', 'max' => 45]
+            [['startDate', 'endDate'], 'safe'],
+            [['categoryId'], 'integer'],
+            [['testName'], 'string', 'max' => 45]
         ];
     }
 
@@ -45,11 +45,11 @@ class Tests extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'testsid' => 'Testsid',
-            'testname' => 'Test name',
-            'startdate' => 'Start date',
-            'enddate' => 'End date',
-            'categoriesID' => 'Category',
+            'testId' => 'Testsid',
+            'testName' => 'Test name',
+            'startDate' => 'Start date',
+            'endDate' => 'End date',
+            'categoryId' => 'Category',
         ];
     }
 

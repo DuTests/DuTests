@@ -18,8 +18,8 @@ class TestsSearch extends Tests
     public function rules()
     {
         return [
-            [['testsid', 'categoriesID'], 'integer'],
-            [['testname', 'startdate', 'enddate'], 'safe'],
+            [['testId', 'categoryId'], 'integer'],
+            [['testName', 'startDate', 'endDate'], 'safe'],
         ];
     }
 
@@ -56,13 +56,13 @@ class TestsSearch extends Tests
         }
 
         $query->andFilterWhere([
-            'testsid' => $this->testsid,
-            'startdate' => $this->startdate,
-            'enddate' => $this->enddate,
-            'categoriesID' => $this->categoriesID,
+            'testId' => $this->testsId,
+            'startDate' => $this->startDate,
+            'endDate' => $this->endDate,
+            'categoryId' => $this->categoryId,
         ]);
 
-        $query->andFilterWhere(['like', 'testname', $this->testname]);
+        $query->andFilterWhere(['like', 'testName', $this->testName]);
 
         return $dataProvider;
     }
