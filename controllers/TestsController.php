@@ -29,7 +29,7 @@ class TestsController extends Controller
         }
         else 
         {
-            return $this->render('CreateTest', ['model' => $model]);
+            return $this->render('createtest', ['model' => $model]);
         }
     }
 	public function actionUpdatetest()
