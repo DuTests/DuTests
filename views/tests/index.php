@@ -17,7 +17,6 @@ $this->title = 'Tests';
     <p>
         <?= Html::a('Create Tests', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -27,7 +26,7 @@ $this->title = 'Tests';
             'testName',
             'startDate',
             'endDate',
-            'categoryId',           
+            'categoryName',          
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete} {pass}',
             'buttons' => [
@@ -42,4 +41,5 @@ $this->title = 'Tests';
         ]
     ]); 
     ?>
+
 </div>
