@@ -23,4 +23,3 @@ use yii\helpers\Html;
     
 <?php ActiveForm::end(); ?>
 </div>
-<!--  -->

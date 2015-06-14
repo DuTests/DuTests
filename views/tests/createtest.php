@@ -7,6 +7,15 @@ use app\models\CreateTest;
 use app\models\Category;
 ?>
 
+<?php
+$this->title = 'Сreate Test';
+
+if(Yii::$app->session->getFlash('error'))
+{
+	echo Yii::$app->session->getFlash('error');
+}
+?>
+
 <div class="row">
 	<div class="col-lg-5">
 
