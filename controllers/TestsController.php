@@ -44,17 +44,27 @@ class TestsController extends Controller
         
   public function actionCreatecategory()
     {
-        $model = new \app\models\CategoryForm();
+        $model = new CategoryForm();
         if ($model->load(Yii::$app->request->post()))
         {
-            $domainmodel = new Category();
-            
-            $domainmodel->category = $model->name;
 
-            $domainmodel->save();
+           $existing = Category::getCategoryByName($model->name);
+
+           if(count($existing)<1)
+           {
+                $domainmodel = new Category();
+
+                $domainmodel->category = $model->name;
+
+                $domainmodel->save();
+
+                $model = new CategoryForm();
             
-            $model = new CategoryForm();
-            
+           }
+           else
+           {
+               $model->addError("name", "Category already exist");
+           }
             return $this->render('category', [
                 'model' => $model,
             ]);
