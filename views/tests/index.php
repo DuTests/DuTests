@@ -24,10 +24,10 @@ $this->title = 'Tests';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'testname',
-            'startdate',
-            'enddate',
-            'categoriesID',
+            'testName',
+            'startDate',
+            'endDate',
+            'categoryId',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
