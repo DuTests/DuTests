@@ -60,6 +60,12 @@ class m150507_181329_add_tables extends Migration
             'comment'            =>  'varchar(500)'
         ));
 
+        $this->createTable('testQuestions', array(
+            'id'                 =>  'pk',
+            'testId'             =>  'int',
+            'questionId'         =>  'int'
+        ));
+
         $this->addForeignKey('completed_tests_to_testi', 'completedTests', 'testId', 'tests', 'testId', 'CASCADE', 'RESTRICT');
         $this->addForeignKey('completed_tests_to_users', 'completedTests', 'userId', 'users', 'userId', 'CASCADE', 'RESTRICT');
 
@@ -70,6 +76,11 @@ class m150507_181329_add_tables extends Migration
         $this->addForeignKey('atbilshu_var_to_testa_jaut', 'answers', 'questionId', 'questions', 'questionId', 'CASCADE', 'RESTRICT');
 
         $this->addForeignKey('userid_to_feedback', 'feedback', 'userId', 'users', 'userId', 'CASCADE', 'RESTRICT');
+
+        $this->addForeignKey('testId_to_testQuestions', 'testQuestions', 'testId', 'tests', 'testId', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey('questionId_to_testQuestions', 'testQuestions', 'questionId', 'questions', 'questionId', 'CASCADE', 'RESTRICT');
+
+
     }
 
     public function down()
@@ -82,6 +93,7 @@ class m150507_181329_add_tables extends Migration
         $this->dropTable('answers');
         $this->dropTable('categories');
         $this->dropTable('feedback');
+        $this->dropTable('testQuestions');
         $this->execute('SET FOREIGN_KEY_CHECKS=1');
     }
 }
