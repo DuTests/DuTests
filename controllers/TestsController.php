@@ -169,4 +169,16 @@ class TestsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionPass($id)
+	{
+		$model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->testId]);
+        } else {
+            return $this->render('pass', [
+                'model' => $model,
+            ]);
+        }
+	}
 }
