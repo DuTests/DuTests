@@ -112,7 +112,6 @@ use app\models\Feedback;
                     $num[$i]['b'] = rand(1,10); // b
                         
                     $question[$i]->question = "Number of {$num[$i]['a']} + {$num[$i]['b']} = ?"; // question a + b ?
-                    $question[$i]->testId = $t->testId;
                     
                     $question[$i]->save();
                     
