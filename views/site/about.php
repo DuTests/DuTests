@@ -12,9 +12,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         This is the About page. On this page you can see statistics of our DuTests system:
     </p>
+
+    </br>
     
-    <?=  $model->users; ?>
-    <?=  $model->tests; ?>
-    <?=  $model->completed; ?>
-    <?=  $model->categories; ?>
+    <?= $model->users; ?>
+    <?= $model->tests; ?>
+    <?= $model->completed; ?>
+    <?= $model->categories; ?>
+    <?= $model->questions; ?>
 </div>

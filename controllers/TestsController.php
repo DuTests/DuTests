@@ -12,9 +12,7 @@ use yii\filters\VerbFilter;
 use app\models\Category;
 use app\models\CategoryForm;
 use app\models\CreateTest;
-/**
- * TestsController implements the CRUD actions for Tests model.
- */
+
 class TestsController extends Controller
 {
 	public function actionResults($msg = "Hello this is testing of 'Results' controller.")
@@ -91,10 +89,7 @@ class TestsController extends Controller
             ],
         ];
     }
-    /**
-     * Lists all Tests models.
-     * @return mixed
-     */
+    
     public function actionIndex()
     {
         $searchModel = new TestsSearch();
@@ -116,12 +111,6 @@ class TestsController extends Controller
         ]);
     }
 	
-
-    /**
-     * Displays a single Tests model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -129,11 +118,6 @@ class TestsController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Tests model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Tests();
@@ -147,12 +131,6 @@ class TestsController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Tests model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -166,13 +144,7 @@ class TestsController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Tests model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-   public function actionDelete($id)
+    public function actionDelete($id)
     {
        $this->findModel($id)->delete();
 
@@ -187,12 +159,4 @@ class TestsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
-    /**
-     * Finds the Tests model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Tests the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */  
 }
