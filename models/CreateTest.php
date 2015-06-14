@@ -23,7 +23,7 @@ class CreateTest extends ActiveRecord
 	public function rules()
 	{
 		return [
-			[['testName', 'startDate', 'endDate', 'category', 'minPercent', 'selectQuestions'], 'required'],
+			[['testName', 'startDate', 'endDate', 'category', 'minPercent', 'selectQuestions'], 'required', 'unique'],
 			[['testName'], 'string', 'max' => 64],
 			[['endDate'], 'compare', 'compareAttribute' => 'startDate', 'operator'=>'>', 'message'=>'Start Date must be less than End Date'],
 			[['category'], 'string', 'max' => 64],

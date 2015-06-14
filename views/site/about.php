@@ -1,7 +1,8 @@
 <?php
 use yii\helpers\Html;
-
 /* @var $this yii\web\View */
+use app\models\About;
+
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -9,8 +10,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        This is the About page. You may modify the following file to customize its content:
+        This is the About page. On this page you can see statistics of our DuTests system:
     </p>
-
-    <code><?= __FILE__ ?></code>
+    
+    <?=  $model->users; ?>
+    <?=  $model->tests; ?>
+    <?=  $model->completed; ?>
+    <?=  $model->categories; ?>
 </div>

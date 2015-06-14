@@ -25,9 +25,9 @@ class TestsController extends Controller
     {
         $model = new CreateTest();
         
-        if($model->load(Yii::$app->request->post()))
+        if($model->load(Yii::$app->request->post()) && $model->validate())
         {
-        
+
         }
         else 
         {
