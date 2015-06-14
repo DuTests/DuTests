@@ -79,7 +79,8 @@ class m150507_181329_add_tables extends Migration
 
         $this->addForeignKey('testId_to_testQuestions', 'testQuestions', 'testId', 'tests', 'testId', 'CASCADE', 'RESTRICT');
         $this->addForeignKey('questionId_to_testQuestions', 'testQuestions', 'questionId', 'questions', 'questionId', 'CASCADE', 'RESTRICT');
-    }
+
+}
 
     public function down()
     {   
@@ -91,7 +92,7 @@ class m150507_181329_add_tables extends Migration
         $this->dropTable('answers');
         $this->dropTable('categories');
         $this->dropTable('feedback');
-        $this->dropTable('testQuestion');
+        $this->dropTable('testQuestions');
         $this->execute('SET FOREIGN_KEY_CHECKS=1');
     }
 }
