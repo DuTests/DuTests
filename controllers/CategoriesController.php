@@ -100,14 +100,7 @@ class CategoriesController extends Controller
 
 		  public function actionDelete($id)
 		{
-			//$customer = Customer::find()->where(['id' => 1])->one();
 			$CatID = Tests::find()->where(['categoryId' => $id])->one();
-			$TestID = Tests::find()->where(['testId' => $id])->one();
-			//if((($this->findModelCategories($id))==$this->findModel($id)))
-				
-			//if (strpos(Yii::$app->user->returnUrl, "categories") !== false){
-
-
 			if ($CatID == true)
 			{
 
