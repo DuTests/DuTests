@@ -35,7 +35,6 @@ AppAsset::register($this);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
-                    ['label' => 'Create questions', 'url' => ['/site/profile']],
                     ['label' => 'Profile', 'url' => ['/site/profile']],
                     ['label' => 'Tests', 'url' => ['/tests/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
