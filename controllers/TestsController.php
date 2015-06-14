@@ -8,6 +8,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Category;
 use app\models\CategoryForm;
+use app\models\CreateTest;
 /**
  * TestsController implements the CRUD actions for Tests model.
  */
@@ -18,9 +19,18 @@ class TestsController extends Controller
 		return $this->render('index', ['message' => $msg]);
 	}
 	public function actionCreatetest()
-	{
-		return $this->render('UnderConstruction');
-	}
+    {
+        $model = new CreateTest();
+        
+        if($model->load(Yii::$app->request->post()))
+        {
+        
+        }
+        else 
+        {
+            return $this->render('CreateTest', ['model' => $model]);
+        }
+    }
 	public function actionUpdatetest()
 	{
 		return $this->render('UnderConstruction');
