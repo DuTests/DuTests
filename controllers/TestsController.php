@@ -3,8 +3,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Tests;
 use app\models\TestsSearch;
-use app\models\Category;
+use app\models\Categories;
 use app\models\CategorySearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -94,7 +95,7 @@ class TestsController extends Controller
         ]);
     }
 	
-		public function actionCategories()
+	public function actionCategories()
     {
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -104,6 +105,7 @@ class TestsController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+	
 
     /**
      * Displays a single Tests model.
@@ -160,20 +162,56 @@ class TestsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+   public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+       $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
+	   /* public function actionDelete($id)
+		{
+			//$customer = Customer::find()->where(['id' => 1])->one();
+			$CatID = Tests::find()->where(['categoryId' => $id])->one();
+			$TestID = Tests::find()->where(['testId' => $id])->one();
+			//echo Url::current();
+		//if((($this->findModelCategories($id))==$this->findModel($id)))
+			
+		//if (strpos(Yii::$app->user->returnUrl, "categories") !== false){
 
-    /**
-     * Finds the Tests model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Tests the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+
+		if (strpos(Yii::$app->user->returnUrl, "categories") !== false)
+		{
+			$this->findModelCategories($id)->delete($id);
+			return $this->redirect(['categories']);
+		}                     
+		else if(strpos(Yii::$app->user->returnUrl, "index") !== false)
+		{
+			$this->findModel($id)->delete();
+			return $this->redirect(['index']);
+		}
+		echo Yii::$app->previous();
+		/*else
+		{
+			return $this->redirect(['categories']);
+		}*/
+		///httprequest/index.php?r=site/index
+		/*else if(($this->findModel($id))!=false)
+		{
+		$this->findModel($id)->delete();
+        return $this->redirect(['index']);
+		}	*/  
+   // }
+	
+	/*protected function findModelCategories($id)
+    {
+        if (($model = Categories::findOne($id)) !== null) {
+            return $model;
+        } else { return false;
+           // throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+	*/
+		
     protected function findModel($id)
     {
         if (($model = Tests::findOne($id)) !== null) {
@@ -182,4 +220,21 @@ class TestsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    /**
+     * Finds the Tests model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Tests the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+  //  protected function findModel($id)
+  //  {
+    //    if (($model = Tests::findOne($id)) !== null) {
+   //         return $model;
+   //     } else {
+    //        throw new NotFoundHttpException('The requested page does not exist.');
+    //    }
+  //  }
+	    
 }

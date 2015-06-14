@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use app\models\Categories;
 
 /**
- * TestsSearch represents the model behind the search form about `app\models\Tests`.
+ * CategoriesSearch represents the model behind the search form about `app\models\Categories`.
  */
-class CategorySearch extends Categories
+class CategoriesSearch extends Categories
 {
     /**
      * @inheritdoc
@@ -26,10 +26,10 @@ class CategorySearch extends Categories
     /**
      * @inheritdoc
      */
-   public function scenarios()
+    public function scenarios()
     {
         // bypass scenarios() implementation in the parent class
-  return Model::scenarios();
+        return Model::scenarios();
     }
 
     /**
@@ -57,8 +57,6 @@ class CategorySearch extends Categories
 
         $query->andFilterWhere([
             'categoryId' => $this->categoryId,
-            'category' => $this->category,
-
         ]);
 
         $query->andFilterWhere(['like', 'category', $this->category]);

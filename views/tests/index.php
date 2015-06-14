@@ -12,7 +12,7 @@ $this->title = 'Tests';
 <div class="tests-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo Yii::$app->request->url;// echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Tests', ['create'], ['class' => 'btn btn-success']) ?>
@@ -24,10 +24,10 @@ $this->title = 'Tests';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'testname',
-            'startdate',
-            'enddate',
-            'categoriesID',
+            'testName',
+            'startDate',
+            'endDate',
+            'categoryId',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

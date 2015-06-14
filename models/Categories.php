@@ -4,8 +4,14 @@ namespace app\models;
 
 use Yii;
 
-
-
+/**
+ * This is the model class for table "categories".
+ *
+ * @property integer $categoryId
+ * @property string $category
+ *
+ * @property Tests[] $tests
+ */
 class Categories extends \yii\db\ActiveRecord
 {
     /**
@@ -22,8 +28,7 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category'], 'string', 'max' => 45],
-			[['categoryId'], 'integer']
+            [['category'], 'string', 'max' => 45]
         ];
     }
 
@@ -34,17 +39,15 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'categoryId' => 'Category ID',
-            'category' => 'Category name',
-
-
+            'category' => 'Category',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-   // public function getCategories()
-  //  {
-   //     return $this->hasOne(Categories::className(), ['categoryId' => 'categoryId']);
-   // }
-  }
+    public function getTests()
+    {
+        return $this->hasMany(Tests::className(), ['categoryId' => 'categoryId']);
+    }
+}
