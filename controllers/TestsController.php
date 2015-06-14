@@ -12,6 +12,9 @@ use yii\filters\VerbFilter;
 use app\models\Category;
 use app\models\CategoryForm;
 use app\models\CreateTest;
+use app\models\Question;
+use app\models\testQuestions;
+
 
 class TestsController extends Controller
 {
@@ -25,7 +28,32 @@ class TestsController extends Controller
         
         if($model->load(Yii::$app->request->post()) && $model->validate())
         {
+            $model->testName = $model->testName;
+            $model->startDate = $model->startDate;
+            $model->endDate = $model->endDate;
+            $model->category = $model->category;
+            $model->minPercent = $model->minPercent;
+            $model->testId = $model->testId;
+            $questionInput = $model->selectQuestions;
+            $model->save();
 
+            $questions = CreateTest::getQuestions($model->category);
+            $questionCount = count($questions);
+
+            if($questionInput < $questionCount)
+            {
+                Yii::$app->session->setFlash('error', 'Database has less question than you want');
+            }
+            else
+            {
+                for($i = 0; $i < $questionInput; $i++)
+                {
+                    $QuestionModel = new testQuestions();
+                    $QuestionModel->testId = $model->testId;
+                    $QuestionModel->questionId = $questions[$i].questionId;
+                    $QuestionModel->save();
+                }
+            }
         }
         else 
         {
