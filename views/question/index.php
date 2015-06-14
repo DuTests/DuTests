@@ -4,15 +4,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 $this->title = 'Questions index';
 ?>
-<style>
-    .mar {
-        padding-left: 5px;    }
-    .lab
-    {
-        margin-top: 90%;
-    }
 
-</style>
 
 
     <div style="width:400px;"  >

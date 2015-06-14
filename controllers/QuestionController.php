@@ -19,12 +19,12 @@ class QuestionController extends Controller
 	public function actionIndex(){
 
 		$model=new Getq();
-		
+		$c;
         if ($model->load(Yii::$app->request->post())) {
             // valid data received in $model
 
             // do something meaningful here about $model ...
-            $c;
+            
         	if($model->correct==1)
         	{
         		$c=$model->a1;

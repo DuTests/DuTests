@@ -2,6 +2,13 @@ html,
 body {
     height: 100%;
 }
+.mar{
+        padding-left: 5px;    
+}
+
+.lab{
+        margin-top: 90%;
+}
 
 .wrap {
     min-height: 100%;
