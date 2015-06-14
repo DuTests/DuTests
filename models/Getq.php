@@ -17,7 +17,7 @@ class Getq extends Model
     {
         return [
             [['question', 'a1','a2','a3','a4','correct'], 'required','message'=>'This field cannot be blank!'],
-
+            [['correct'], 'integer', 'max' => 4, 'min' => 1]
         ];
     }
 }

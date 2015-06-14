@@ -38,7 +38,7 @@ class m150507_181329_add_tables extends Migration
         $this->createTable('questions', array(
             'questionId'         =>  'pk',
             'question'           =>  'varchar(45)',
-            'testId'             =>  'int',
+            'categoryId'             =>  'int',
             'correctAnswerId'    =>  'int'
         ));
 
@@ -71,7 +71,7 @@ class m150507_181329_add_tables extends Migration
 
         $this->addForeignKey('testi_to_kategorijas', 'tests', 'categoryId', 'categories', 'categoryId', 'CASCADE', 'RESTRICT');
 
-        $this->addForeignKey('testa_jaut_to_testi', 'questions', 'testId', 'tests', 'testId', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey('testa_jaut_to_testi', 'questions', 'categoryId', 'categories', 'categoryId', 'CASCADE', 'RESTRICT');
 
         $this->addForeignKey('atbilshu_var_to_testa_jaut', 'answers', 'questionId', 'questions', 'questionId', 'CASCADE', 'RESTRICT');
 

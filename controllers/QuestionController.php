@@ -21,10 +21,6 @@ class QuestionController extends Controller
 		$model=new Getq();
 		$c;
         if ($model->load(Yii::$app->request->post())) {
-            // valid data received in $model
-
-            // do something meaningful here about $model ...
-            
         	if($model->correct==1)
         	{
         		$c=$model->a1;
@@ -59,8 +55,6 @@ class QuestionController extends Controller
 	            $q=Question::find()->where(['question' => $model->question])->one();
 	            $q->correctAnswerId=$aid;
 	            $q->save();
-
-
         	}
         	else if($model->correct==2)
         	{
