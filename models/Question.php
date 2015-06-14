@@ -15,14 +15,14 @@ use Yii;
  * @property Users $user
  * @property Tests[] $tests
  */
-class Category extends \yii\db\ActiveRecord
+class Question extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'categories';
+        return 'questions';
     }
 
     /**
@@ -31,7 +31,7 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category'], 'string', 'max' => 45]
+            [['question'], 'string', 'max' => 45]
         ];
     }
 
@@ -41,8 +41,10 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'categoriesId' => 'Categories ID',
-            'category' => 'Name'
+            'questionId' => 'Question ID',
+            'question' => 'Question',
+            'testId' => 'Test ID',
+            'correctAnswerId' => 'Correct Answer ID',
         ];
     }
 

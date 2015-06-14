@@ -1,7 +1,10 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use app\models\CreateTest;
+use app\models\Category;
 ?>
 
 <div class="row">
@@ -11,11 +14,8 @@ use yii\widgets\ActiveForm;
 <?= $form->field($model, 'TestName'); ?>
 <?= $form->field($model, 'startDate')->textInput(array('type' => 'date')); ?>
 <?= $form->field($model, 'endDate')->textInput(array('type' => 'date')); ?>
-<?= $form->field($model, 'category')->dropDownList( [
-		'a' => 'Value a',
-		'b' => 'Value b',
-		'c' => 'Value c',
-		'd' => 'Value d' ]); ?>
+<?= $form->field($model, 'category')->dropDownList( 
+		ArrayHelper::map(Category::find()->all(), 'categoryId', 'category'), ['prompt' => 'Please enter category']) ?>
 <?= $form->field($model, 'minPercent'); ?>
 <?= $form->field($model, 'selectQuestions'); ?>
 
@@ -23,6 +23,5 @@ use yii\widgets\ActiveForm;
 	<?= Html::submitButton('Submit', ['class' => 'btn btn-success']) ?>
 </div>
 <?php ActiveForm::end(); ?>
-
 	</div>
 </div>
