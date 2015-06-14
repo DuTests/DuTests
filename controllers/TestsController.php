@@ -6,6 +6,8 @@ use app\models\TestsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Category;
+use app\models\CategoryForm;
 /**
  * TestsController implements the CRUD actions for Tests model.
  */
@@ -45,21 +47,18 @@ class TestsController extends Controller
         $model = new \app\models\CategoryForm();
         if ($model->load(Yii::$app->request->post()))
         {
-           
-            $domainmodel = new \app\models\Category();
+            $domainmodel = new Category();
             
-            $domainmodel->name = $model->name;
-            $domainmodel->userid = \Yii::$app->user->id;
-            $domainmodel->createdin = date("Y-m-d");
-            
+            $domainmodel->category = $model->name;
+
             $domainmodel->save();
             
-             $model = new \app\models\CategoryForm();
+            $model = new CategoryForm();
             
             return $this->render('category', [
                 'model' => $model,
             ]);
-        
+
         } else {
             return $this->render('category', [
                 'model' => $model,

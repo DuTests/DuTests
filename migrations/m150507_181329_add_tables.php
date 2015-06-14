@@ -19,7 +19,7 @@ class m150507_181329_add_tables extends Migration
             'password'           =>  'varchar(255)'
         ));
 
-        $this->createTable('сompletedTests', array(
+        $this->createTable('completedTests', array(
             'completedId'        =>  'pk',
             'date'               =>  'date',
             'correctAnswerCount' =>  'varchar(45)',
@@ -38,7 +38,8 @@ class m150507_181329_add_tables extends Migration
         $this->createTable('questions', array(
             'questionId'         =>  'pk',
             'question'           =>  'varchar(45)',
-            'testId'             =>  'int'
+            'testId'             =>  'int',
+            'correctAnswerId'    =>  'int'
         ));
 
         $this->createTable('answers', array(
@@ -59,8 +60,8 @@ class m150507_181329_add_tables extends Migration
             'comment'            =>  'varchar(500)'
         ));
 
-        $this->addForeignKey('completed_tests_to_testi', 'сompletedTests', 'testId', 'tests', 'testId', 'CASCADE', 'RESTRICT');
-        $this->addForeignKey('completed_tests_to_users', 'сompletedTests', 'userId', 'users', 'userId', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey('completed_tests_to_testi', 'completedTests', 'testId', 'tests', 'testId', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey('completed_tests_to_users', 'completedTests', 'userId', 'users', 'userId', 'CASCADE', 'RESTRICT');
 
         $this->addForeignKey('testi_to_kategorijas', 'tests', 'categoryId', 'categories', 'categoryId', 'CASCADE', 'RESTRICT');
 

@@ -17,8 +17,8 @@ class TestForm extends Model
 	public function rules()
 	{
 		return [
-			[['TestName', 'startDate', 'endDate', 'category', 'minPercent', 'selectQuestions'], 'required'],
-			[['TestName'], 'string', 'max' => 64],
+			[['testName', 'startDate', 'endDate', 'category', 'minPercent', 'selectQuestions'], 'required'],
+			[['testName'], 'string', 'max' => 64],
 			[['category'], 'string', 'max' => 64],
 			[['minPercent'], 'integer', 'max' => 100],
 			[['selectQuestions'], 'string', 'max' => 64]
