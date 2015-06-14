@@ -16,7 +16,7 @@ class Getq extends Model
     public function rules()
     {
         return [
-            [['question', 'a1','a2','a3','a4','correct'], 'required'],
+            [['question', 'a1','a2','a3','a4','correct'], 'required','message'=>'This field cannot be blank!'],
 
         ];
     }
