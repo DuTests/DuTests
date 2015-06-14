@@ -24,41 +24,7 @@ class TestsController extends Controller
 	}
 	public function actionCreatetest()
     {
-        $model = new CreateTest();
         
-        if($model->load(Yii::$app->request->post()) && $model->validate())
-        {
-            $model->testName = $model->testName;
-            $model->startDate = $model->startDate;
-            $model->endDate = $model->endDate;
-            $model->category = $model->category;
-            $model->minPercent = $model->minPercent;
-            $model->testId = $model->testId;
-            $questionInput = $model->selectQuestions;
-            $model->save();
-
-            $questions = CreateTest::getQuestions($model->category);
-            $questionCount = count($questions);
-
-            if($questionInput < $questionCount)
-            {
-                Yii::$app->session->setFlash('error', 'Database has less question than you want');
-            }
-            else
-            {
-                for($i = 0; $i < $questionInput; $i++)
-                {
-                    $QuestionModel = new testQuestions();
-                    $QuestionModel->testId = $model->testId;
-                    $QuestionModel->questionId = $questions[$i].questionId;
-                    $QuestionModel->save();
-                }
-            }
-        }
-        else 
-        {
-            return $this->render('createtest', ['model' => $model]);
-        }
     }
 	public function actionUpdatetest()
 	{
@@ -160,14 +126,40 @@ class TestsController extends Controller
 
     public function actionCreate()
     {
-        $model = new Tests();
+        $model = new CreateTest();
+        
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            $model->testName = $model->testName;
+            $model->startDate = $model->startDate;
+            $model->endDate = $model->endDate;
+            $model->category = $model->category;
+            $model->minPercent = $model->minPercent;
+            $model->testId = $model->testId;
+            $questionInput = $model->selectQuestions;
+            $model->save();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->testId]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            $questions = CreateTest::getQuestions($model->category);
+            $questionCount = count($questions);
+
+            if($questionInput < $questionCount)
+            {
+                Yii::$app->session->setFlash('error', 'Database has less question than you want');
+            }
+            else
+            {
+                for($i = 0; $i < $questionInput; $i++)
+                {
+                    $QuestionModel = new testQuestions();
+                    $QuestionModel->testId = $model->testId;
+                    $QuestionModel->questionId = $questions[$i].questionId;
+                    $QuestionModel->save();
+                }
+            }
+        }
+        else 
+        {
+            return $this->render('createtest', ['model' => $model]);
         }
     }
 

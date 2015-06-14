@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Tests[] $tests
  */
-class Categories extends \yii\db\ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

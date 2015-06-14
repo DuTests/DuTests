@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Categories;
+use app\models\Category;
 
 /**
  * CategoriesSearch represents the model behind the search form about `app\models\Categories`.
  */
-class CategoriesSearch extends Categories
+class CategoriesSearch extends Category
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class CategoriesSearch extends Categories
      */
     public function search($params)
     {
-        $query = Categories::find();
+        $query = Category::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

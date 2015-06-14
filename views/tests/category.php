@@ -26,10 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'name') ?>
     
-    <?php echo Html::activeHiddenInput($model, 'createdby') ?>
-    <?php echo Html::activeHiddenInput($model, 'createdin') ?>
-
-
     <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">
             <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'Save-button']) ?>
