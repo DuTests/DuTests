@@ -22,7 +22,7 @@ class CompletedTest extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'completedtests';
+        return 'completedTests';
     }
 
     /**
@@ -47,21 +47,5 @@ class CompletedTest extends \yii\db\ActiveRecord
             'testId' => 'Test ID',
             'userId' => 'User ID',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(Users::className(), ['UsersID' => 'userid']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTests()
-    {
-        return $this->hasMany(Tests::className(), ['categoriesID' => 'categoriesID']);
     }
 }

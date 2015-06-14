@@ -7,11 +7,11 @@ use Yii;
 /**
  * This is the model class for table "tests".
  *
- * @property integer $testsid
- * @property string $testname
- * @property string $startdate
- * @property string $enddate
- * @property integer $categoriesID
+ * @property integer $testId
+ * @property string $testName
+ * @property string $startDate
+ * @property string $endDate
+ * @property integer $categoryId
  *
  * @property Completedtests[] $ñompletedtests
  * @property AnswerOfTest[] $answerOfTests
@@ -45,7 +45,7 @@ class Tests extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'testId' => 'Testsid',
+            'testId' => 'Test ID',
             'testName' => 'Test name',
             'startDate' => 'Start date',
             'endDate' => 'End date',
@@ -66,7 +66,7 @@ class Tests extends \yii\db\ActiveRecord
      */
     public function getAnswerOfTests()
     {
-        return $this->hasMany(AnswerOfTest::className(), ['testId' => 'testId']);
+        return $this->hasMany(Questions::className(), ['testId' => 'testId']);
     }
 
     /**

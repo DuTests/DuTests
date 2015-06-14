@@ -169,7 +169,7 @@ use app\models\Feedback;
             {
                 $fb[$i] = new Feedback;
                 $fb[$i]->userId = $u->userId;
-                $fb[$i]->date_time = date('y.m.d');
+                $fb[$i]->date = date('y.m.d');
                 $fb[$i]->comment = "Hi, my name is {$u->firstName} {$u->lastName} and my registration date is {$u->registrationDate}!";
                 $fb[$i]->save();
             }

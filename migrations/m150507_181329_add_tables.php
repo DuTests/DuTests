@@ -54,9 +54,9 @@ class m150507_181329_add_tables extends Migration
         ));
         
         $this->createTable('feedback', array(
-            'feedbackID'         =>  'pk',
+            'feedbackId'         =>  'pk',
             'userId'             =>  'int',
-            'date_time'          =>  'Date',
+            'date'               =>  'date',
             'comment'            =>  'varchar(500)'
         ));
 

@@ -45,6 +45,7 @@ class TestsController extends Controller
   public function actionCreatecategory()
     {
         $model = new \app\models\CategoryForm();
+        
         if ($model->load(Yii::$app->request->post()))
         {
             $domainmodel = new Category();
@@ -113,7 +114,7 @@ class TestsController extends Controller
         $model = new Tests();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->testsid]);
+            return $this->redirect(['view', 'id' => $model->testId]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -132,7 +133,7 @@ class TestsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->testsid]);
+            return $this->redirect(['view', 'id' => $model->testId]);
         } else {
             return $this->render('update', [
                 'model' => $model,

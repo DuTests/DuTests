@@ -41,18 +41,10 @@ class Feedback extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'feedbackID' => 'Categories ID',
+            'feedbackId' => 'Categories ID',
             'userId' => 'user ID',
-            'date_time' => 'Date Time',
+            'date' => 'Date Time',
             'comment' => 'Comment',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(Users::className(), ['UsersID' => 'userid']);
     }
 }
