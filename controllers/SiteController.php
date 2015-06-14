@@ -10,7 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\UserForm;
 use app\models\TestForm;
-
+use app\models\About;
 class SiteController extends Controller
 {
     public function behaviors()
@@ -98,7 +98,11 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
-        return $this->render('about');
+        $testscount=About::getTests();
+        
+        $userscount=About::getUsers();
+        $completed=About::getCompletedtests();
+        return $this->render('about', array('testscount' => $testscount,'userscount' => $userscount, 'completed' => $completed));
     }
 
     public function actionSay($msg = "ThreeRandomWords")
