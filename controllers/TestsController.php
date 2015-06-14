@@ -3,11 +3,15 @@ namespace app\controllers;
 use Yii;
 use app\models\Tests;
 use app\models\TestsSearch;
+use app\models\Categories;
+use app\models\CategorySearch;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Category;
 use app\models\CategoryForm;
+use app\models\CreateTest;
 /**
  * TestsController implements the CRUD actions for Tests model.
  */
@@ -18,9 +22,18 @@ class TestsController extends Controller
 		return $this->render('index', ['message' => $msg]);
 	}
 	public function actionCreatetest()
-	{
-		return $this->render('UnderConstruction');
-	}
+    {
+        $model = new CreateTest();
+        
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+
+        }
+        else 
+        {
+            return $this->render('CreateTest', ['model' => $model]);
+        }
+    }
 	public function actionUpdatetest()
 	{
 		return $this->render('UnderConstruction');
@@ -45,6 +58,7 @@ class TestsController extends Controller
   public function actionCreatecategory()
     {
         $model = new \app\models\CategoryForm();
+        
         if ($model->load(Yii::$app->request->post()))
         {
             $domainmodel = new Category();
@@ -90,6 +104,18 @@ class TestsController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+	
+	public function actionCategories()
+    {
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('categories', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+	
 
     /**
      * Displays a single Tests model.
@@ -113,7 +139,7 @@ class TestsController extends Controller
         $model = new Tests();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->testsid]);
+            return $this->redirect(['view', 'id' => $model->testId]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -132,7 +158,7 @@ class TestsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->testsid]);
+            return $this->redirect(['view', 'id' => $model->testId]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -146,20 +172,13 @@ class TestsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
+   public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+       $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
-
-    /**
-     * Finds the Tests model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Tests the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
+	   	
     protected function findModel($id)
     {
         if (($model = Tests::findOne($id)) !== null) {
@@ -168,4 +187,12 @@ class TestsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    /**
+     * Finds the Tests model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Tests the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */  
 }

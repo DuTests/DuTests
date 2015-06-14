@@ -31,7 +31,7 @@ class Answer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['category'], 'string', 'max' => 45]
+            [['answer'], 'string', 'max' => 45]
         ];
     }
 

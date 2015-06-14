@@ -7,22 +7,19 @@ use Yii;
 /**
  * This is the model class for table "categories".
  *
- * @property integer $categoriesID
- * @property string $name
- * @property integer $userid
- * @property string $createdin
+ * @property integer $categoryId
+ * @property string $category
  *
- * @property Users $user
  * @property Tests[] $tests
  */
-class Question extends \yii\db\ActiveRecord
+class Categories extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'questions';
+        return 'categories';
     }
 
     /**
@@ -31,7 +28,7 @@ class Question extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['question'], 'string', 'max' => 45]
+            [['category'], 'string', 'max' => 45]
         ];
     }
 
@@ -41,11 +38,16 @@ class Question extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'questionId' => 'Question ID',
-            'question' => 'Question',
             'categoryId' => 'Category ID',
-            'correctAnswerId' => 'Correct Answer ID',
+            'category' => 'Category',
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTests()
+    {
+        return $this->hasMany(Tests::className(), ['categoryId' => 'categoryId']);
+    }
 }

@@ -48,20 +48,4 @@ class CompletedTest extends \yii\db\ActiveRecord
             'userId' => 'User ID',
         ];
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(Users::className(), ['UsersID' => 'userid']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTests()
-    {
-        return $this->hasMany(Tests::className(), ['categoriesID' => 'categoriesID']);
-    }
 }

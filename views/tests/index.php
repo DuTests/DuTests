@@ -12,7 +12,7 @@ $this->title = 'Tests';
 <div class="tests-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    
 
     <p>
         <?= Html::a('Create Tests', ['create'], ['class' => 'btn btn-success']) ?>
@@ -27,9 +27,19 @@ $this->title = 'Tests';
             'testName',
             'startDate',
             'endDate',
-            'categoryId',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            'categoryId',           
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update} {delete} {pass}',
+            'buttons' => [
+                'pass' => function($url, $model) {
+                    $url = \yii\helpers\Url::toRoute(['passtest']);
+                    return Html::a('<span class="glyphicon glyphicon-ok"></span>', $url, [
+                        'title' => 'Pass test',
+                        'class' => 'grid-action'
+                    ]);
+                }          
+            ]]
+        ]
+    ]); 
+    ?>
 </div>
