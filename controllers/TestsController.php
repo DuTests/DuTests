@@ -83,18 +83,29 @@ class TestsController extends Controller
         
   public function actionCreatecategory()
     {
-        $model = new \app\models\CategoryForm();
-        
+        $model = new CategoryForm();
+
         if ($model->load(Yii::$app->request->post()))
         {
-            $domainmodel = new Category();
-            
-            $domainmodel->category = $model->name;
 
-            $domainmodel->save();
-            
-            $model = new CategoryForm();
-            
+            $existing = Category::getCategoryByName($model->name);
+
+            if(count($existing)<1)
+            {
+                $domainmodel = new Category();
+
+                $domainmodel->category = $model->name;
+
+                $domainmodel->save();
+
+                $model = new CategoryForm();
+
+            }
+            else
+            {
+               $model->addError("name", "Category already exist");
+            }
+
             return $this->render('category', [
                 'model' => $model,
             ]);
@@ -123,23 +134,6 @@ class TestsController extends Controller
         $searchModel = new TestsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-
-
-        /*$dataProvider =  new CArrayDataProvider('User');
-        $dataProvider->setData($model->friends);
-        $this->widget('zii.widgets.grid.CGridView', array(
-            'id' => 'gridUser',
-            'dataProvider' =>$dataProvider,
-        ));
-
-        $t="test";
-        $catn=Category::find()->all();
-        $testi=Tests::find()->all();
-        $count=0;
-        foreach($testi as $el)
-        {
-            $el['categoryId']=$catn[$count]['category'];
-        }*/
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
