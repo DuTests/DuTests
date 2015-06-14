@@ -59,15 +59,14 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?= 
-											$copyYear = 2015;
-												$curYear = date('Y'); 
-											if ($copyYear<$curYear)
-											{
-												echo (($copyYear != $curYear) ? '-' . $curYear : '');
-											}
-											
-											?></p>
+            <?php
+    			$copyYear = 2015;
+    			$curYear = date('Y'); 
+    			if ($copyYear<$curYear)
+    			{
+    				echo (($copyYear != $curYear) ? '-' . $curYear : '');
+    			}
+			?>
             <p class="pull-left">&copy; DU Tests <?= date('Y') ?></p>
         </div>
     </footer>

@@ -29,7 +29,19 @@ $this->title = 'Tests';
             'endDate',
             'categoryId',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            
+            ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update} {delete} {pass}',
+            'buttons' => [
+                'pass' => function($url, $model) {
+                    $url = \yii\helpers\Url::toRoute(['passtest']);
+                    return Html::a('<span class="glyphicon glyphicon-ok"></span>', $url, [
+                        'title' => 'Pass test',
+                        'class' => 'grid-action'
+                    ]);
+                }          
+            ]]
+        ]
+    ]); 
+    ?>
 </div>
