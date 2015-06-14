@@ -83,6 +83,7 @@ use app\models\Feedback;
                 $tests[$i]->save();
                 $tests[$i]->testName = "Test_{$tests[$i]->testId}";
                 $tests[$i]->categoryId = $cats[rand(1, $cats_num)]->categoryId;
+                $tests[$i]->categoryName = "Kategorija_{$cats[$i]->categoryId}";
                 
                 $dateStart = time();
                 $dateEnd = $dateStart + 3600 * 24 * 7;

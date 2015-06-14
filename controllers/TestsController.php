@@ -99,6 +99,24 @@ class TestsController extends Controller
     {
         $searchModel = new TestsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+
+
+        /*$dataProvider =  new CArrayDataProvider('User');
+        $dataProvider->setData($model->friends);
+        $this->widget('zii.widgets.grid.CGridView', array(
+            'id' => 'gridUser',
+            'dataProvider' =>$dataProvider,
+        ));
+
+        $t="test";
+        $catn=Category::find()->all();
+        $testi=Tests::find()->all();
+        $count=0;
+        foreach($testi as $el)
+        {
+            $el['categoryId']=$catn[$count]['category'];
+        }*/
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

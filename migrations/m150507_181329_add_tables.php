@@ -32,7 +32,8 @@ class m150507_181329_add_tables extends Migration
             'testName'           =>  'varchar(45)',
             'startDate'          =>  'date',
             'endDate'            =>  'date',
-            'categoryId'         =>  'int'
+            'categoryId'         =>  'int',
+            'categoryName'       =>  'varchar(45)'
         ));
 
         $this->createTable('questions', array(

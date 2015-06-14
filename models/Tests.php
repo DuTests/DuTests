@@ -50,6 +50,7 @@ class Tests extends \yii\db\ActiveRecord
             'startDate' => 'Start date',
             'endDate' => 'End date',
             'categoryId' => 'Category',
+            'categoryName' => 'Category Name'
         ];
     }
 
