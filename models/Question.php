@@ -43,7 +43,7 @@ class Question extends \yii\db\ActiveRecord
         return [
             'questionId' => 'Question ID',
             'question' => 'Question',
-            'testId' => 'Test ID',
+            'categoryId' => 'Category ID',
             'correctAnswerId' => 'Correct Answer ID',
         ];
     }
