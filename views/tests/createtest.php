@@ -11,7 +11,7 @@ use app\models\Category;
 	<div class="col-lg-5">
 
 <?php $form = ActiveForm::begin(); ?>
-<?= $form->field($model, 'TestName'); ?>
+<?= $form->field($model, 'testName'); ?>
 <?= $form->field($model, 'startDate')->textInput(array('type' => 'date')); ?>
 <?= $form->field($model, 'endDate')->textInput(array('type' => 'date')); ?>
 <?= $form->field($model, 'category')->dropDownList( 

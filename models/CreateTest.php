@@ -8,7 +8,7 @@ use yii\db\ActiveRecord;
 
 class CreateTest extends ActiveRecord
 {
-	public $TestName;
+	public $testName;
 	public $startDate;
 	public $endDate;
 	public $category;
