@@ -13,7 +13,7 @@ use app\models\Question;
 use app\models\Answer;
 use app\models\CompletedTest;
 use app\models\Feedback;
-use app\models\TestQuestion;
+use app\models\TestQuestions;
 
 use \yii\helpers\Url;
 
@@ -57,7 +57,7 @@ use \yii\helpers\Url;
                     foreach($fb as $f)
                         $f->delete();
                         
-                    $tq = TestQuestion::find()->all();
+                    $tq = TestQuestions::find()->all();
                     foreach($tq as $t)
                         $t->delete();
                     # --- DELETE IN ALL TABLES --- #
@@ -210,7 +210,7 @@ use \yii\helpers\Url;
                     $tnum = rand(1, $tests_num); // add question one or $tnum tests
                     for($j = 1; $j <= $tnum; $j++)
                     {
-                        $tq[$i] = new TestQuestion;
+                        $tq[$i] = new TestQuestions;
                         $tq[$i]->testId = $tests[$j]->testId;
                         $tq[$i]->questionId = $q->questionId;
                         $tq[$i]->save();
