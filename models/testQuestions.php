@@ -6,11 +6,11 @@ use Yii;
 use yii\base\Model;
 use yii\db\ActiveRecord;
 
-class testQuestions extends ActiveRecord
+class TestQuestions extends ActiveRecord
 {	
 	public static function tableName()
 	{
-		return 'testquestions';
+		return 'testQuestions';
 	}
 
 	public function rules()
