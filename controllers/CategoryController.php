@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Categories;
+use app\models\Category;
 use app\models\Tests;
 use app\models\CategoriesSearch;
 use yii\web\Controller;
@@ -121,7 +121,7 @@ class CategoryController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Categories::findOne($id)) !== null) {
+        if (($model = Category::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

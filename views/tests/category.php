@@ -12,6 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tests-category">
     <h1><?= Html::encode($this->title) ?></h1>
+    
+    <?= Yii::$app->session->getFlash('success'); ?>
 
     <p>Please fill out the following fields to category:</p>
 
@@ -26,14 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'name') ?>
     
-    <?php echo Html::activeHiddenInput($model, 'createdby') ?>
-    <?php echo Html::activeHiddenInput($model, 'createdin') ?>
-
-
     <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">
             <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'Save-button']) ?>
-            <a href="<?php echo Url::to(array('tests/showcategories')); ?>" class="btn btn-danger">Cancel</a>
+            <a href="<?php echo Url::to(array('category/index')); ?>" class="btn btn-danger">Cancel</a>
         </div>
     </div>
     

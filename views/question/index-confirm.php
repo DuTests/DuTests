@@ -1,12 +1,15 @@
 <?php
 use yii\helpers\Html;
-/* @var $this yii\web\View */
+use app\models\Category;
 $this->title = 'Questions index';
 ?>
 <h2>Data added successfully</h2>
 
 
 <?php
+	echo "<p><b>Category: </b>";
+		echo Category::find()->where(['categoryId' => $mod->category])->one()->category."</p>";
+
 	echo "<p><b>Question: </b>".Html::encode($mod->question)."</b></p>";
 	
 	echo "<p><b>Answers:</b></p>";

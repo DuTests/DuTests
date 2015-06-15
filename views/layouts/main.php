@@ -36,13 +36,14 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Create questions', 'url' => ['/question/index']],
-                    ['label' => 'Profile', 'url' => ['/site/profile']],
+                    ['label' => 'Categories', 'url' => ['/category/index']],
                     ['label' => 'Tests', 'url' => ['/tests/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
+                    ['label' => 'Feedback', 'url' => ['/feedback/index']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->Username . ')',
+                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                             'url' => ['/site/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ],

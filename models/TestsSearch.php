@@ -19,7 +19,7 @@ class TestsSearch extends Tests
     {
         return [
             [['testId', 'categoryId'], 'integer'],
-            [['testName', 'startDate', 'endDate'], 'safe'],
+            [['testName', 'startDate', 'endDate', 'categoryName'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class TestsSearch extends Tests
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
             'categoryId' => $this->categoryId,
+            'categoryName' => $this->categoryName,
         ]);
 
         $query->andFilterWhere(['like', 'testName', $this->testName]);

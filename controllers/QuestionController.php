@@ -27,6 +27,7 @@ class QuestionController extends Controller
 
         		$q=new Question();
             	$q->question=$model->question;
+            	$q->categoryId = $model->category;
            		$q->save();
           		$qid = Question::find()->where(['question' => $model->question])->one()['questionId'];
 
@@ -62,6 +63,7 @@ class QuestionController extends Controller
 
         		$q=new Question();
             	$q->question=$model->question;
+            	$q->categoryId = $model->category;
            		$q->save();
           		$qid = Question::find()->where(['question' => $model->question])->one()['questionId'];
 
@@ -97,6 +99,7 @@ class QuestionController extends Controller
 
         		$q=new Question();
             	$q->question=$model->question;
+            	$q->categoryId = $model->category;
            		$q->save();
           		$qid = Question::find()->where(['question' => $model->question])->one()['questionId'];
 
@@ -132,6 +135,7 @@ class QuestionController extends Controller
 
         		$q=new Question();
             	$q->question=$model->question;
+            	$q->categoryId = $model->category;
            		$q->save();
           		$qid = Question::find()->where(['question' => $model->question])->one()['questionId'];
 

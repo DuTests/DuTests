@@ -17,7 +17,6 @@ $this->title = 'Tests';
     <p>
         <?= Html::a('Create Tests', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -27,12 +26,12 @@ $this->title = 'Tests';
             'testName',
             'startDate',
             'endDate',
-            'categoryId',           
+            'categoryName',          
             ['class' => 'yii\grid\ActionColumn',
             'template' => '{view} {update} {delete} {pass}',
             'buttons' => [
                 'pass' => function($url, $model) {
-                    $url = \yii\helpers\Url::toRoute(['passtest']);
+                    $url = \yii\helpers\Url::toRoute(['pass', 'id' => $model->testId]);
                     return Html::a('<span class="glyphicon glyphicon-ok"></span>', $url, [
                         'title' => 'Pass test',
                         'class' => 'grid-action'
@@ -42,4 +41,5 @@ $this->title = 'Tests';
         ]
     ]); 
     ?>
+
 </div>

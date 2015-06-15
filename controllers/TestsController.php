@@ -12,6 +12,9 @@ use yii\filters\VerbFilter;
 use app\models\Category;
 use app\models\CategoryForm;
 use app\models\CreateTest;
+use app\models\Question;
+use app\models\testQuestions;
+
 
 class TestsController extends Controller
 {
@@ -19,19 +22,7 @@ class TestsController extends Controller
 	{
 		return $this->render('index', ['message' => $msg]);
 	}
-	public function actionCreatetest()
-    {
-        $model = new CreateTest();
-        
-        if($model->load(Yii::$app->request->post()) && $model->validate())
-        {
 
-        }
-        else 
-        {
-            return $this->render('createtest', ['model' => $model]);
-        }
-    }
 	public function actionUpdatetest()
 	{
 		return $this->render('UnderConstruction');
@@ -55,18 +46,30 @@ class TestsController extends Controller
         
   public function actionCreatecategory()
     {
-        $model = new \app\models\CategoryForm();
-        
+        $model = new CategoryForm();
+
         if ($model->load(Yii::$app->request->post()))
         {
-            $domainmodel = new Category();
-            
-            $domainmodel->category = $model->name;
 
-            $domainmodel->save();
+            $existing = Category::getCategoryByName($model->name);
             
-            $model = new CategoryForm();
-            
+            if($existing<1)
+            {
+                $domainmodel = new Category();
+
+                $domainmodel->category = $model->name;
+
+                $domainmodel->save();
+
+                $model = new CategoryForm();
+
+                Yii::$app->getSession()->setFlash('success', '<b>Category created successfully</b>');
+            }
+            else
+            {
+               $model->addError("name", "Category already exist");
+            }
+
             return $this->render('category', [
                 'model' => $model,
             ]);
@@ -94,6 +97,7 @@ class TestsController extends Controller
     {
         $searchModel = new TestsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -120,14 +124,47 @@ class TestsController extends Controller
 
     public function actionCreate()
     {
-        $model = new Tests();
+        $model = new CreateTest();
+        
+        if($model->load(Yii::$app->request->post()))
+        {
+            
+            $test = new Tests;
+            $test->testName = $model->testName;
+            $test->startDate = $model->startDate;
+            $test->endDate = $model->endDate;
+            $test->categoryId = $model->category;
+            $test->minPercent = $model->minPercent;
+            $test->categoryName = Category::find()->where(['categoryId' => $model->category])->one()->category;
+            $test->save();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->testId]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            $questionInput = $model->selectQuestions;
+            
+            $questions = CreateTest::getQuestions($model->category);
+            $questionCount = count($questions);
+
+            if($questionInput > $questionCount)
+            {
+                Yii::$app->session->setFlash('error', 'Database has less question than you want');
+            }
+            else
+            {
+                for($i = 1; $i < $questionInput; $i++)
+                {
+                    $testQuestion = new testQuestions();
+                    $testQuestion->testId = $test->testId;
+                    $testQuestion->questionId = $questions[$i]->questionId;
+                    $testQuestion->save();
+                }
+
+                return $this->redirect('index');
+            }
+
+            return $this->render('create', ['model' => $model]);
+        }
+        else 
+        {
+            return $this->render('create', ['model' => $model]);
         }
     }
 
@@ -135,7 +172,11 @@ class TestsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->categoryName = Category::find()->where(['categoryId' => $model->categoryId])->one()->category;
+            $model->save();
+
             return $this->redirect(['view', 'id' => $model->testId]);
         } else {
             return $this->render('update', [
@@ -159,4 +200,16 @@ class TestsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionPass($id)
+	{
+		$model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->testId]);
+        } else {
+            return $this->render('pass', [
+                'model' => $model,
+            ]);
+        }
+	}
 }
