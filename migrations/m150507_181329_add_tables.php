@@ -33,6 +33,7 @@ class m150507_181329_add_tables extends Migration
             'startDate'          =>  'date',
             'endDate'            =>  'date',
             'categoryId'         =>  'int',
+            'minPercent'         =>  'int',
             'categoryName'       =>  'varchar(45)'
         ));
 

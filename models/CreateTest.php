@@ -43,7 +43,7 @@ class CreateTest extends ActiveRecord
 
 	public static function getQuestions($id)
 	{
-		return Question::find()->asArray()->where(['categoryId' => $id]);
+		return Question::find()->where(['categoryId' => $id])->all();
 	}
 
 }

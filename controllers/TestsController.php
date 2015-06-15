@@ -22,10 +22,7 @@ class TestsController extends Controller
 	{
 		return $this->render('index', ['message' => $msg]);
 	}
-	public function actionCreatetest()
-    {
-        
-    }
+
 	public function actionUpdatetest()
 	{
 		return $this->render('UnderConstruction');
@@ -55,8 +52,8 @@ class TestsController extends Controller
         {
 
             $existing = Category::getCategoryByName($model->name);
-
-            if(count($existing)<1)
+            
+            if($existing<1)
             {
                 $domainmodel = new Category();
 
@@ -66,6 +63,7 @@ class TestsController extends Controller
 
                 $model = new CategoryForm();
 
+                Yii::$app->getSession()->setFlash('success', '<b>Category created successfully</b>');
             }
             else
             {
@@ -128,38 +126,45 @@ class TestsController extends Controller
     {
         $model = new CreateTest();
         
-        if($model->load(Yii::$app->request->post()) && $model->validate())
+        if($model->load(Yii::$app->request->post()))
         {
-            $model->testName = $model->testName;
-            $model->startDate = $model->startDate;
-            $model->endDate = $model->endDate;
-            $model->category = $model->category;
-            $model->minPercent = $model->minPercent;
-            $model->testId = $model->testId;
-            $questionInput = $model->selectQuestions;
-            $model->save();
+            
+            $test = new Tests;
+            $test->testName = $model->testName;
+            $test->startDate = $model->startDate;
+            $test->endDate = $model->endDate;
+            $test->categoryId = $model->category;
+            $test->minPercent = $model->minPercent;
+            $test->categoryName = Category::find()->where(['categoryId' => $model->category])->one()->category;
+            $test->save();
 
+            $questionInput = $model->selectQuestions;
+            
             $questions = CreateTest::getQuestions($model->category);
             $questionCount = count($questions);
 
-            if($questionInput < $questionCount)
+            if($questionInput > $questionCount)
             {
                 Yii::$app->session->setFlash('error', 'Database has less question than you want');
             }
             else
             {
-                for($i = 0; $i < $questionInput; $i++)
+                for($i = 1; $i < $questionInput; $i++)
                 {
-                    $QuestionModel = new testQuestions();
-                    $QuestionModel->testId = $model->testId;
-                    $QuestionModel->questionId = $questions[$i].questionId;
-                    $QuestionModel->save();
+                    $testQuestion = new testQuestions();
+                    $testQuestion->testId = $test->testId;
+                    $testQuestion->questionId = $questions[$i]->questionId;
+                    $testQuestion->save();
                 }
+
+                return $this->redirect('index');
             }
+
+            return $this->render('create', ['model' => $model]);
         }
         else 
         {
-            return $this->render('createtest', ['model' => $model]);
+            return $this->render('create', ['model' => $model]);
         }
     }
 
@@ -167,7 +172,11 @@ class TestsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->categoryName = Category::find()->where(['categoryId' => $model->categoryId])->one()->category;
+            $model->save();
+
             return $this->redirect(['view', 'id' => $model->testId]);
         } else {
             return $this->render('update', [

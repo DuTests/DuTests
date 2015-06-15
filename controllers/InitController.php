@@ -103,7 +103,8 @@ use \yii\helpers\Url;
                     $tests[$i]->testName = "Test_{$tests[$i]->testId}";
                     $tests[$i]->categoryId = $cats[rand(1, $cats_num)]->categoryId;
                     $tests[$i]->categoryName = "Kategorija_{$cats[$i]->categoryId}";    
-                    
+                    $tests[$i]->minPercent = 1;
+
                     $dateStart = time();
                     $dateEnd = $dateStart + 3600 * 24 * 7;
                     

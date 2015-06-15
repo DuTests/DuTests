@@ -1,7 +1,8 @@
 <?php
 
 namespace app\models;
-
+use yii\web\IdentityInterface;
+use yii\db\ActiveRecord;
 use Yii;
 
 /**
@@ -15,11 +16,10 @@ use Yii;
  * @property Users $user
  * @property Tests[] $tests
  */
-class Feedback extends \yii\db\ActiveRecord
+class Feedback extends ActiveRecord 
 {
-    /**
-     * @inheritdoc
-     */
+    public $feedbacks;
+    
     public static function tableName()
     {
         return 'feedback';
@@ -31,7 +31,8 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            //[['category'], 'string', 'max' => 45]
+            [['userId', 'comment', 'date'], 'required'],
+            [['comment'], 'string', 'max' => 500]
         ];
     }
 
@@ -41,7 +42,7 @@ class Feedback extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'feedbackId' => 'Categories ID',
+            'feedbackId' => 'Feedback ID',
             'userId' => 'user ID',
             'date' => 'Date Time',
             'comment' => 'Comment',

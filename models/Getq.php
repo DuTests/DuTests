@@ -12,11 +12,12 @@ class Getq extends Model
     public $a3;
     public $a4;
     public $correct;
+    public $category;
 
     public function rules()
     {
         return [
-            [['question', 'a1','a2','a3','a4','correct'], 'required','message'=>'This field cannot be blank!'],
+            [['question', 'a1','a2','a3','a4','correct', 'category'], 'required','message'=>'This field cannot be blank!'],
             [['correct'], 'integer', 'max' => 4, 'min' => 1]
         ];
     }

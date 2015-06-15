@@ -50,4 +50,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Tests::className(), ['categoryId' => 'categoryId']);
     }
+
+    public function getCategoryByName($name)
+    {
+        return Category::find()->where(['category' => $name])->count();
+    }
 }

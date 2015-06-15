@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Tests */
@@ -17,5 +18,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
+    <a href="<?php echo Url::to(array('category/index')); ?>" class="btn btn-danger">Cancel</a>
 
 </div>

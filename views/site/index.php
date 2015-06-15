@@ -13,8 +13,8 @@
     </br>
          <div class="zoom_icon" align="center" >
             <a href="tests/index"><i class="fa fa-book fa-4x" ></br>Tests</i></a>
-            <a href="tests/results"><i class="fa fa-graduation-cap fa-4x" ></br>Results</i></a>
-            <a href="category/index"><i class="fa fa-graduation-cap fa-4x" ></br>Categories</i></a>
+            <!--<a href="tests/results"><i class="fa fa-graduation-cap fa-4x" ></br>Results</i></a>-->
+            <a href="category/index"><i class="fa fa-code-fork fa-4x" ></br>Categories</i></a>
         </div>
     </div>
 </div>

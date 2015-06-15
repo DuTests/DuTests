@@ -1,21 +1,36 @@
 <?php
 
 use yii\helpers\Html;
-
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Tests */
-
-$this->title = 'Create Tests';
-$this->params['breadcrumbs'][] = ['label' => 'Tests', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+use yii\helpers\ArrayHelper;
+use yii\widgets\ActiveForm;
+use app\models\CreateTest;
+use app\models\Category;
 ?>
-<div class="tests-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php
+$this->title = 'Сreate Test';
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+if(Yii::$app->session->getFlash('error'))
+{
+	echo Yii::$app->session->getFlash('error');
+}
+?>
 
+<div class="row">
+	<div class="col-lg-5">
+
+<?php $form = ActiveForm::begin(); ?>
+<?= $form->field($model, 'testName'); ?>
+<?= $form->field($model, 'startDate')->textInput(array('type' => 'date')); ?>
+<?= $form->field($model, 'endDate')->textInput(array('type' => 'date')); ?>
+<?= $form->field($model, 'category')->dropDownList( 
+		ArrayHelper::map(Category::find()->all(), 'categoryId', 'category'), ['prompt' => 'Please enter category']) ?>
+<?= $form->field($model, 'minPercent'); ?>
+<?= $form->field($model, 'selectQuestions'); ?>
+
+<div class="form-group">
+	<?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'name' => 'Save-button']) ?>
+</div>
+<?php ActiveForm::end(); ?>
+	</div>
 </div>
