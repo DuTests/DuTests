@@ -13,7 +13,7 @@ use app\models\Category;
 use app\models\CategoryForm;
 use app\models\CreateTest;
 use app\models\Question;
-use app\models\testQuestions;
+use app\models\TestQuestions;
 
 
 class TestsController extends Controller
@@ -151,7 +151,7 @@ class TestsController extends Controller
             {
                 for($i = 1; $i < $questionInput; $i++)
                 {
-                    $testQuestion = new testQuestions();
+                    $testQuestion = new TestQuestions();
                     $testQuestion->testId = $test->testId;
                     $testQuestion->questionId = $questions[$i]->questionId;
                     $testQuestion->save();
